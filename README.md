@@ -12,6 +12,6 @@ Source : [wikipedia](https://en.wikipedia.org/wiki/Software_design_pattern)
 - How to make an instance in the super class, it called a pattern to perform a specific processing in a subclass with the Factory pattern
 
 ## Builder
-- By abstracting the process of object craetion, it is possible to generate dynamic objects
+- By abstracting the process of object creation, it is possible to generate dynamic objects
 
 ## ChainOfResponsibility
