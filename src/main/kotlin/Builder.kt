@@ -1,27 +1,31 @@
-class Param() {
-    private var id = 0
-    private var title = ""
-    private var description = ""
+data class User(
+    val id: Int,
+    val name: String,
+    val age: Int
+) {
+    class Builder {
+        var id: Int? = null
+        var name: String? = null
+        var age: Int? = null
 
-    fun id(id: Int): Int
-        get() = this.id
-        set(value) = { field = value } 
+        fun build(): User = User(
+            requireNotNull(id),
+            requireNotNull(name),
+            requireNotNull(age)
+        )
+    }
 
-    fun title(title: String): String
-        get() = this.title
-        set(value) = { field = value }
-
-    fun description(description: String): String
-        get() = this.description
-        set(value) = { field = value }
-
-    inner class Builder() {
-        constructor(init: Builder.() -> Unit): this() {
-            init()
+    companion object {
+        fun build(predicate: Builder.() -> Unit): User {
+            return Builder().apply { predicate() }.build()
         }
+    }
+}
 
-        fun id(init: () -> Unit) {
-            //
-        }
-    }    
+fun main(args: Array<String>) {
+    User.build { 
+        id = 1
+        name = "bill"
+        age = 12
+    }
 }
